@@ -1,10 +1,35 @@
-<p>
-  orders-list works!
-</p>
+<h2>Orders List</h2>
 
+<mat-table [dataSource]="orderList$ | async" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Order Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
 
-<a routerLink="/order/details/1">Order 1</a>
-<br>
-<a routerLink="/order/details/2">Order 2</a>
-<br>
-<a routerLink="/order/details/3">Order 3</a>
+  <!-- Name Column -->
+  <ng-container matColumnDef="patient">
+    <mat-header-cell *matHeaderCellDef> Patient Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.patient}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="orderId">
+    <mat-header-cell *matHeaderCellDef> Order Number </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.orderId}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
